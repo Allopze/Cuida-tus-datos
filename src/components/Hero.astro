@@ -1,0 +1,65 @@
+---
+import { content } from '../content/privacy-content';
+import { ArrowDown } from '@lucide/astro';
+import HeroVisual from './HeroVisual.astro';
+---
+<header class="min-h-[90dvh] flex flex-col justify-center p-6 md:p-16 max-w-7xl mx-auto relative overflow-hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center w-full">
+    <div class="lg:col-span-3 z-10 flex flex-col gap-6 relative">
+      <div class="flex items-center gap-4 mb-2">
+        <img
+          src="/cuida-tus-datos-logo.svg"
+          alt="Cuida tus datos"
+          class="w-14 h-14 md:w-16 md:h-16 rounded-2xl object-contain bg-white/75 dark:bg-black/20 p-2 shadow-[0_10px_30px_rgba(0,0,0,0.12)]"
+        />
+        <div class="flex flex-col gap-0.5">
+          <span class="text-xs font-bold uppercase tracking-[0.35em] opacity-60">Proyecto escolar</span>
+          <span class="text-xl md:text-2xl font-display font-extrabold tracking-tight">Cuida tus datos</span>
+        </div>
+      </div>
+
+      <div class="inline-flex px-4 py-2 rounded-full theme-card text-sm font-bold w-max uppercase tracking-wider border border-primary/30 shadow-none animate-pulse-subtle" style="backdrop-filter: blur(8px);">
+        Experiencia Interactiva
+      </div>
+
+      <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-black tracking-tighter leading-[1.05] max-w-4xl text-balance">
+        {content.hero.title}
+      </h1>
+
+      <p class="text-lg md:text-xl max-w-2xl opacity-75 leading-relaxed border-l-4 pl-6 border-primary font-medium">
+        {content.hero.subtitle}
+      </p>
+
+      {content.hero.quickFact && (
+        <div class="flex items-start gap-3 p-4 rounded-xl border border-primary/20 bg-primary/5 max-w-xl">
+          <span class="text-primary text-xl shrink-0 mt-0.5">⚖</span>
+          <p class="text-sm md:text-base font-medium opacity-85 leading-relaxed">{content.hero.quickFact}</p>
+        </div>
+      )}
+
+      <div class="mt-4">
+        <a href="#info" data-track="cta_hero_click" data-track-label={content.hero.cta} class="theme-btn py-4 px-10 inline-flex items-center gap-3 text-lg group active:scale-[0.97] transition-transform">
+          <span>{content.hero.cta}</span>
+          <ArrowDown class="w-6 h-6 group-hover:translate-y-1 transition-transform" stroke-width="2.5" />
+        </a>
+      </div>
+    </div>
+
+    <div class="lg:col-span-2 hidden lg:block">
+      <HeroVisual />
+    </div>
+  </div>
+</header>
+
+<style>
+  @keyframes pulse-subtle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  .animate-pulse-subtle {
+    animation: pulse-subtle 3s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-pulse-subtle { animation: none; }
+  }
+</style>

@@ -1,0 +1,20 @@
+# Cuida tus datos
+
+Cuida tus datos es una experiencia educativa en espanol de Chile sobre datos personales, privacidad digital, patrones oscuros y habitos basicos de proteccion.
+
+## Contenido principal
+
+- Que son los datos personales.
+- Por que importa la privacidad digital.
+- Derechos sobre datos personales en Chile.
+- Patrones oscuros en banners, permisos, formularios y suscripciones.
+- Checklist antes de aceptar cookies, permisos o formularios.
+- Preguntas frecuentes sobre privacidad digital.
+
+## Audiencia
+
+Estudiantes y publico general que busca entender mejor como proteger sus datos personales en internet.
+
+## Uso recomendado
+
+Este recurso tiene fines educativos y no reemplaza asesoria legal, tecnica o profesional.

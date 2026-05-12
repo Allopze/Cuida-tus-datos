@@ -1,0 +1,32 @@
+---
+interface Props {
+  id?: string;
+  title: string;
+  description?: string;
+  number?: number;
+}
+
+const { id, title, description, number } = Astro.props;
+---
+<section id={id} class="py-20 md:py-28 px-6 md:px-16 max-w-7xl mx-auto flex flex-col gap-10 relative border-t border-border-theme/20 reveal">
+  <div class="flex flex-col gap-5 max-w-4xl relative z-10">
+    <div class="flex items-start gap-4">
+      {number && (
+        <span class="text-6xl md:text-7xl font-display font-black opacity-[0.07] leading-none select-none shrink-0 -mt-2" aria-hidden="true">
+          {String(number).padStart(2, '0')}
+        </span>
+      )}
+      <h2 class="text-3xl md:text-5xl font-display font-bold tracking-tight text-balance leading-tight">
+        {title}
+      </h2>
+    </div>
+    {description && (
+      <p class="text-lg md:text-xl opacity-65 leading-relaxed font-medium max-w-3xl">
+        {description}
+      </p>
+    )}
+  </div>
+  <div class="w-full relative z-10 stagger">
+    <slot />
+  </div>
+</section>

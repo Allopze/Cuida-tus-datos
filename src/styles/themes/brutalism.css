@@ -1,0 +1,23 @@
+html[data-theme="brutalism"] {
+  --bg-color: #f5f019;
+  --text-color: #1a1a1a;
+  --primary: #ef4444;
+  --primary-text: #ffffff;
+  --surface: #ffffff;
+  --border-color: #1a1a1a;
+  --font-base: 'Space Mono', monospace;
+  --font-display: 'Space Grotesk', sans-serif;
+  --shadow: 6px 6px 0px #1a1a1a;
+  --border-w: 3px;
+  --radius: 0px;
+  --glass-blur: blur(0px);
+
+  --bg-pattern: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 20px,
+    rgba(0,0,0,0.04) 20px,
+    rgba(0,0,0,0.04) 21px
+  );
+  --bg-size: 100% 100%;
+}

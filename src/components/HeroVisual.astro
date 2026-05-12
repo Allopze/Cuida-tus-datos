@@ -1,0 +1,77 @@
+---
+/**
+ * Decorative visual element for the Hero section.
+ * Renders floating "data tags" that simulate personal data being collected,
+ * reinforcing the privacy theme before the user reads a word.
+ */
+const dataTags = [
+  { text: 'IP: 190.44.xx.xx', delay: '0s', x: '10%', y: '15%', rotate: '-3deg' },
+  { text: 'Santiago, CL', delay: '0.5s', x: '55%', y: '8%', rotate: '2deg' },
+  { text: 'Chrome 126', delay: '1s', x: '30%', y: '65%', rotate: '-1deg' },
+  { text: 'Lat: -33.44', delay: '1.5s', x: '70%', y: '50%', rotate: '4deg' },
+  { text: '23:41 hrs', delay: '0.3s', x: '15%', y: '80%', rotate: '-5deg' },
+  { text: 'macOS 15.2', delay: '0.8s', x: '60%', y: '78%', rotate: '1deg' },
+  { text: 'es-CL', delay: '1.2s', x: '80%', y: '25%', rotate: '-2deg' },
+  { text: '1920×1080', delay: '0.6s', x: '40%', y: '35%', rotate: '3deg' },
+];
+---
+<div class="hero-visual" aria-hidden="true">
+  {dataTags.map(tag => (
+    <span
+      class="data-tag"
+      style={`left:${tag.x}; top:${tag.y}; animation-delay:${tag.delay}; --rotate:${tag.rotate};`}
+    >
+      {tag.text}
+    </span>
+  ))}
+  <div class="hero-visual-gradient"></div>
+</div>
+
+<style>
+  .hero-visual {
+    position: relative;
+    width: 100%;
+    min-height: 280px;
+    overflow: hidden;
+  }
+
+  .hero-visual-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, var(--bg-color) 80%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .data-tag {
+    position: absolute;
+    font-family: var(--font-base);
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    border: var(--border-w) solid var(--border-color);
+    background: var(--surface);
+    color: var(--text-color);
+    opacity: 0.7;
+    white-space: nowrap;
+    transform: rotate(var(--rotate));
+    animation: float-tag 4s ease-in-out infinite;
+    box-shadow: var(--shadow);
+    z-index: 1;
+  }
+
+  @keyframes float-tag {
+    0%, 100% { transform: rotate(var(--rotate)) translateY(0px); }
+    50% { transform: rotate(var(--rotate)) translateY(-14px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .data-tag { animation: none; }
+  }
+
+  @media (max-width: 768px) {
+    .hero-visual { min-height: 160px; }
+    .data-tag { font-size: 0.7rem; padding: 4px 10px; }
+  }
+</style>

@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    container_name: mi-privacidad-app
+    ports:
+      - "3210:80" # El puerto 3210 en el host mapeará al 80 del contenedor
+    restart: unless-stopped

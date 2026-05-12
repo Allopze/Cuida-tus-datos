@@ -1,0 +1,21 @@
+html[data-theme="corporate-tech"] {
+  --bg-color: #fafafa;
+  --text-color: #0f172a;
+  --primary: #2563eb;
+  --primary-text: #ffffff;
+  --surface: #ffffff;
+  --border-color: #e2e8f0;
+  --font-base: 'Satoshi', sans-serif;
+  --font-display: 'Satoshi', sans-serif;
+  --shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 4px 16px -2px rgba(15, 23, 42, 0.06);
+  --border-w: 1px;
+  --radius: 12px;
+  --glass-blur: blur(0px);
+
+  --bg-pattern: linear-gradient(
+    to right, rgba(15, 23, 42, 0.025) 1px, transparent 1px
+  ), linear-gradient(
+    to bottom, rgba(15, 23, 42, 0.025) 1px, transparent 1px
+  );
+  --bg-size: 48px 48px;
+}

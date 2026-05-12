@@ -1,0 +1,37 @@
+---
+---
+<div
+  id="cookie-modal-overlay"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="privacy-modal-title"
+  aria-describedby="privacy-modal-description"
+>
+  <div id="cookie-modal" class="theme-card relative w-[90%] max-w-md p-6 sm:p-8 flex flex-col gap-5 text-center">
+    <h2 id="privacy-modal-title" class="text-2xl font-display font-bold">Aviso de Privacidad</h2>
+    <p id="privacy-modal-description" class="text-base opacity-90 leading-relaxed">
+      Usamos cookies para mejorar tu experiencia, personalizar contenido, analizar el tráfico y posiblemente entender demasiado sobre ti. Puedes aceptar o rechazar el uso de cookies.
+    </p>
+    <p id="attempt-counter" class="text-xs font-mono uppercase tracking-wider opacity-0 transition-opacity duration-300" aria-live="polite"></p>
+    <div class="mt-1 flex flex-col sm:flex-row gap-4 w-full justify-center relative">
+      <button id="btn-reject" type="button" data-track="modal_reject_attempt" class="theme-btn-outline w-full sm:w-1/2 py-3 px-4 z-20 transition-all duration-300" style="background-color: var(--surface);">
+        Rechazar
+      </button>
+      <button id="btn-accept" type="button" data-track="modal_accept_click" class="theme-btn w-full sm:w-1/2 py-3 px-4 z-10 transition-all duration-300">
+        Aceptar
+      </button>
+    </div>
+  </div>
+
+  <div id="error-modal" class="theme-card relative w-[90%] max-w-md p-6 sm:p-8 flex flex-col gap-5 text-center hidden" aria-live="polite">
+    <h2 class="text-2xl font-display font-bold text-red-500">Error en el sistema</h2>
+    <p class="text-base opacity-90 leading-relaxed">
+      Lo sentimos, no podemos procesar esta solicitud ahora mismo. Tu solicitud de privacidad no pudo completarse. Inténtalo de nuevo cuando sea conveniente para nosotros.
+    </p>
+    <button id="btn-error-continue" type="button" data-track="modal_error_continue" class="theme-btn mt-2 py-3 px-4 w-full">
+      Continuar de todos modos
+    </button>
+  </div>
+</div>
+<script src="../scripts/cookie-modal.ts"></script>

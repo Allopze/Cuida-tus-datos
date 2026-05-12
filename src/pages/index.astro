@@ -1,0 +1,225 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CookieModal from '../components/CookieModal.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import TipCard from '../components/TipCard.astro';
+import TermsAndConditions from '../components/TermsAndConditions.astro';
+import FinalReveal from '../components/FinalReveal.astro';
+import AccordionItem from '../components/AccordionItem.astro';
+import ProgressBar from '../components/ProgressBar.astro';
+import { content } from '../content/privacy-content';
+import { Check, TriangleAlert, ExternalLink, Scale, ShieldAlert, BookOpen, Clock, AlertCircle } from '@lucide/astro';
+
+const pageTitle = 'Datos personales y privacidad digital | Cuida tus datos';
+const pageDescription = 'Aprende que son los datos personales, como se usan en internet y que habitos ayudan a proteger tu privacidad digital. Conoce tus derechos ARCO y la ley chilena.';
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: content.faq.list.map(item => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: { '@type': 'Answer', text: item.answer }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(faqStructuredData)} />
+  <CookieModal />
+
+  <main class="relative z-0">
+    <Hero />
+
+    <div id="info" class="flex flex-col">
+
+      <!-- S1: Tag Cloud de datos personales -->
+      <Section title={content.section1.title} description={content.section1.description} number={1}>
+        <div class="flex flex-wrap gap-3">
+          {content.section1.list.map(item => (
+            <span class="px-5 py-3 theme-card font-medium text-base md:text-lg cursor-default hover:border-primary hover:text-primary transition-colors duration-200">
+              {item}
+            </span>
+          ))}
+        </div>
+      </Section>
+
+      <!-- S2: Conceptos esenciales -->
+      <Section title={content.concepts.title} description={content.concepts.description} number={2}>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {content.concepts.list.map(item => (
+            <div class="theme-card p-5 md:p-6 flex flex-col gap-3 group hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between gap-2">
+                <h4 class="text-lg font-bold font-display text-primary">{item.term}</h4>
+                <span class="text-[10px] font-mono uppercase tracking-wider opacity-40 shrink-0 px-2 py-1 rounded-full border border-border-theme/30">{item.source}</span>
+              </div>
+              <p class="text-sm leading-relaxed opacity-80">{item.definition}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <!-- S3: Marco jurídico chileno -->
+      <Section title={content.legalFramework.title} description={content.legalFramework.description} number={3}>
+        <div class="max-w-4xl relative pl-8 md:pl-12">
+          <div class="absolute left-3 md:left-5 top-0 bottom-0 w-px bg-primary/30"></div>
+          {content.legalFramework.list.map(item => (
+            <div class="relative flex gap-4 items-start py-5 group">
+              <div class="absolute left-[-21px] md:left-[-23px] w-4 h-4 rounded-full border-2 border-primary bg-bg-base shrink-0 mt-1.5 group-hover:bg-primary transition-colors"></div>
+              <div class="flex-1 theme-card p-5 md:p-6 group-hover:border-primary/40 transition-colors">
+                <div class="flex items-start justify-between gap-3 mb-2">
+                  <h4 class="text-base md:text-lg font-bold font-display">{item.law}</h4>
+                  <span class={`text-[10px] font-mono uppercase tracking-wider shrink-0 px-2.5 py-1 rounded-full border ${item.status === 'Vigente' ? 'border-green-500/40 text-green-600 dark:text-green-400 bg-green-500/10' : 'border-amber-500/40 text-amber-600 dark:text-amber-400 bg-amber-500/10'}`}>{item.status}</span>
+                </div>
+                <p class="text-sm leading-relaxed opacity-75">{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <!-- S4: Principios del tratamiento -->
+      <Section title={content.principles.title} description={content.principles.description} number={4}>
+        <div class="max-w-4xl theme-card divide-y divide-border-theme/30 overflow-hidden">
+          {content.principles.list.map(item => (
+            <AccordionItem title={item.name}>
+              <p>{item.description}</p>
+            </AccordionItem>
+          ))}
+        </div>
+      </Section>
+
+      <!-- S5: ¿Por qué importa? -->
+      <Section title={content.section2.title} description={content.section2.description} number={5}>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          {content.section2.list.map((item, i) => (
+            <div class="flex gap-4 items-start p-5 md:p-6">
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                <Check class="text-primary w-5 h-5" stroke-width="3" />
+              </div>
+              <p class="leading-relaxed font-medium text-lg">{item}</p>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <!-- S6: Derechos ARCO -->
+      <Section title={content.section3.title} description={content.section3.description} number={6}>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl">
+          {content.section3.list.map(item => (
+            <div class="theme-card p-5 md:p-6 flex flex-col gap-3 group hover:border-primary/40 transition-colors h-full">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <Scale class="text-primary w-5 h-5" stroke-width="2" />
+                </div>
+                <h4 class="text-lg font-bold font-display">{item.right}</h4>
+              </div>
+              <p class="text-sm leading-relaxed opacity-80 flex-1">{item.description}</p>
+              <div class="pt-3 border-t border-border-theme/20">
+                <p class="text-xs font-medium opacity-60 italic">Ej: {item.example}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        {content.section3.note && (
+          <div class="mt-6 max-w-4xl p-4 rounded-xl border border-primary/20 bg-primary/5 text-sm leading-relaxed font-medium opacity-80">
+            <BookOpen class="text-primary w-4 h-4 inline-block mr-2 -mt-0.5" stroke-width="2" />
+            {content.section3.note}
+          </div>
+        )}
+      </Section>
+
+      <!-- S7: Riesgos frecuentes en internet -->
+      <Section title={content.risks.title} description={content.risks.description} number={7}>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl">
+          {content.risks.list.map(item => (
+            <div class="theme-card p-5 md:p-6 flex flex-col gap-3 group hover:border-red-500/40 transition-colors border-l-4 border-l-red-500/30">
+              <div class="flex items-start gap-3">
+                <ShieldAlert class="text-red-500 w-5 h-5 mt-0.5 shrink-0 opacity-70" stroke-width="2" />
+                <h4 class="text-base md:text-lg font-bold">{item.risk}</h4>
+              </div>
+              <p class="text-sm leading-relaxed opacity-75">{item.description}</p>
+              <span class="text-[10px] font-mono uppercase tracking-wider opacity-40 mt-auto">Fuente: {item.source}</span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <!-- S8: Timeline de patrones oscuros -->
+      <Section title={content.section4.title} description={content.section4.description} number={8}>
+        <div class="max-w-3xl relative pl-8 md:pl-12">
+          <div class="absolute left-3 md:left-5 top-0 bottom-0 w-px bg-red-500/30"></div>
+          {content.section4.list.map((item, i) => (
+            <div class="relative flex gap-4 items-start py-5 group">
+              <div class="absolute left-[-21px] md:left-[-23px] w-4 h-4 rounded-full border-2 border-red-500 bg-bg-base shrink-0 mt-1.5 group-hover:bg-red-500 transition-colors"></div>
+              <div class="flex items-start gap-3">
+                <TriangleAlert class="text-red-500 w-5 h-5 mt-0.5 shrink-0 opacity-60" stroke-width="2" />
+                <p class="text-base md:text-lg leading-relaxed font-medium">{item}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <!-- S9: Tips con TipCard -->
+      <Section title={content.section5.title} number={9}>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {content.section5.list.map((item, index) => (
+            <TipCard text={item} index={index + 1} />
+          ))}
+        </div>
+      </Section>
+
+      <!-- S10: Checklist ciudadano -->
+      <Section title={content.checklist.title} number={10}>
+        <div class="max-w-5xl mx-auto flex flex-col gap-6">
+          <ProgressBar total={content.checklist.list.length} label="Checklist de protección de datos" />
+          <div class="grid grid-cols-1 gap-4">
+            {content.checklist.list.map((item, index) => (
+              <div class="theme-card p-4 md:p-5 flex flex-col sm:flex-row sm:items-center gap-4 group hover:border-primary/40 transition-colors cursor-pointer">
+                <div class="flex items-center gap-4 flex-1 min-w-0">
+                  <input id={`privacy-check-${index + 1}`} type="checkbox" data-track="checklist_item_checked" data-track-label={item.action} class="w-5 h-5 md:w-6 md:h-6 accent-primary shrink-0 cursor-pointer group-hover:scale-110 transition-transform" />
+                  <label for={`privacy-check-${index + 1}`} class="cursor-pointer flex-1 font-medium text-base md:text-lg leading-snug">{item.action}</label>
+                </div>
+                <div class="flex items-center gap-4 sm:gap-6 pl-9 sm:pl-0 shrink-0">
+                  <div class="flex items-center gap-1.5">
+                    <Clock class="w-3.5 h-3.5 opacity-40" stroke-width="2" />
+                    <span class="text-xs font-mono uppercase tracking-wider opacity-50">{item.frequency}</span>
+                  </div>
+                </div>
+                <p class="text-xs opacity-50 pl-9 sm:pl-0 sm:max-w-[200px] leading-relaxed hidden lg:block">{item.reason}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <!-- S11: FAQ Accordion -->
+      <Section title={content.faq.title} number={11}>
+        <div class="max-w-4xl theme-card divide-y divide-border-theme/30 overflow-hidden">
+          {content.faq.list.map(item => (
+            <AccordionItem title={item.question}>
+              <p>{item.answer}</p>
+            </AccordionItem>
+          ))}
+        </div>
+      </Section>
+    </div>
+
+    <FinalReveal />
+
+    <TermsAndConditions />
+
+    <footer class="py-10 px-6 text-center text-sm mt-12 border-t border-border-theme/20 max-w-7xl mx-auto">
+      <div class="flex flex-col items-center gap-3 opacity-60">
+        <div class="flex items-center gap-2">
+          <img src="/cuida-tus-datos-logo.svg" alt="" class="w-6 h-6 rounded object-contain" aria-hidden="true" />
+          <span class="font-display font-bold">Cuida tus datos</span>
+        </div>
+        <p>Recurso educativo para reflexionar sobre privacidad digital y datos personales.</p>
+        <p class="opacity-70 max-w-xl leading-relaxed">{content.disclaimer}</p>
+        <p class="opacity-40 text-xs">Última actualización: mayo de 2026. No aceptes por costumbre.</p>
+      </div>
+    </footer>
+  </main>
+</BaseLayout>

@@ -1,0 +1,16 @@
+---
+interface Props {
+  total: number;
+  label?: string;
+}
+const { total, label = 'Progreso' } = Astro.props;
+---
+<div class="progress-wrapper" data-total={total}>
+  <div class="flex items-center justify-between mb-2">
+    <span class="text-sm font-bold uppercase tracking-wider opacity-60">{label}</span>
+    <span class="progress-text text-sm font-bold font-display text-primary">0 / {total}</span>
+  </div>
+  <div class="progress-track w-full h-2.5 rounded-full bg-border-theme/30 overflow-hidden">
+    <div class="progress-fill h-full rounded-full bg-primary transition-all duration-500 ease-out" style="width: 0%"></div>
+  </div>
+</div>

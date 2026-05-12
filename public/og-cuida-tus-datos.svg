@@ -1,0 +1,13 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect x="64" y="64" width="1072" height="502" rx="32" fill="#f8fafc"/>
+  <circle cx="988" cy="158" r="74" fill="#38bdf8"/>
+  <circle cx="1042" cy="220" r="34" fill="#2563eb"/>
+  <rect x="112" y="122" width="106" height="106" rx="28" fill="#2563eb"/>
+  <path d="M165 151C146.778 151 132 165.778 132 184C132 202.222 146.778 217 165 217C183.222 217 198 202.222 198 184C198 165.778 183.222 151 165 151ZM165 164C176.046 164 185 172.954 185 184C185 195.046 176.046 204 165 204C153.954 204 145 195.046 145 184C145 172.954 153.954 164 165 164Z" fill="white"/>
+  <path d="M165 173V186L174 193" stroke="white" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="112" y="300" fill="#0f172a" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="900">Datos personales</text>
+  <text x="112" y="384" fill="#0f172a" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="900">y privacidad digital</text>
+  <text x="116" y="455" fill="#334155" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="600">Aprende a proteger lo que compartes antes de aceptar.</text>
+  <text x="116" y="514" fill="#2563eb" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800">Cuida tus datos</text>
+</svg>

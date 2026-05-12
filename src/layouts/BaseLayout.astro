@@ -1,0 +1,88 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = 'Datos personales y privacidad digital | Cuida tus datos',
+  description = 'Aprende que son los datos personales, como se usan en internet y que habitos ayudan a proteger tu privacidad digital.',
+  canonicalPath = '/'
+} = Astro.props;
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+const gtmId = import.meta.env.PUBLIC_GTM_ID;
+const plausibleDomain = import.meta.env.PUBLIC_PLAUSIBLE_DOMAIN;
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const umamiScriptUrl = import.meta.env.PUBLIC_UMAMI_SCRIPT_URL;
+const canonicalUrl = siteUrl ? new URL(canonicalPath, siteUrl).toString() : undefined;
+const socialImageUrl = siteUrl ? new URL('/og-cuida-tus-datos.svg', siteUrl).toString() : undefined;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'Cuida tus datos',
+  headline: title,
+  description,
+  inLanguage: 'es-CL',
+  about: [
+    'datos personales',
+    'privacidad digital',
+    'patrones oscuros',
+    'derechos digitales'
+  ],
+  educationalLevel: 'Beginner',
+  learningResourceType: 'Interactive resource'
+};
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index,follow" />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <link rel="icon" type="image/svg+xml" href="/cuida-tus-datos-logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonicalUrl && <meta property="og:url" content={canonicalUrl} />}
+    {socialImageUrl && <meta property="og:image" content={socialImageUrl} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {socialImageUrl && <meta name="twitter:image" content={socialImageUrl} />}
+    {plausibleDomain && (
+      <script defer data-domain={plausibleDomain} src="https://plausible.io/js/script.js"></script>
+    )}
+    {umamiWebsiteId && umamiScriptUrl && (
+      <script defer data-website-id={umamiWebsiteId} src={umamiScriptUrl}></script>
+    )}
+    {gtmId && (
+      <script set:html={`window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'gtm.js', 'gtm.start': new Date().getTime() });`} />
+    )}
+    {gtmId && (
+      <script async src={`https://www.googletagmanager.com/gtm.js?id=${gtmId}`}></script>
+    )}
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script>
+      import '../scripts/random-theme.ts';
+      import '../scripts/tracking.ts';
+      import '../scripts/scroll-reveal.ts';
+      import '../scripts/checklist.ts';
+      import '../scripts/toasts.ts';
+    </script>
+  </head>
+  <body class="antialiased w-full relative">
+    <slot />
+  </body>
+</html>

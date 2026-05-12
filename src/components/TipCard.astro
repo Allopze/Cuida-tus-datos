@@ -1,0 +1,16 @@
+---
+interface Props {
+  text: string;
+  index: number;
+}
+const { text, index } = Astro.props;
+---
+<div class="theme-card p-6 md:p-8 flex flex-col md:flex-row gap-5 items-start md:items-center relative overflow-hidden group active:scale-[0.98] transition-transform cursor-default">
+  <div class="absolute -right-6 -top-6 w-28 h-28 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/15 transition-colors duration-700 mix-blend-soft-light pointer-events-none"></div>
+  <div class="bg-primary text-primary-text font-display font-black text-lg w-12 h-12 flex items-center justify-center rounded-xl shrink-0 shadow-lg relative z-10">
+    {index}
+  </div>
+  <p class="font-medium text-base md:text-lg leading-relaxed relative z-10">
+    {text}
+  </p>
+</div>

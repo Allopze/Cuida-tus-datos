@@ -1,0 +1,50 @@
+---
+interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+<details class="accordion-item group">
+  <summary class="flex items-center justify-between gap-4 cursor-pointer p-5 md:p-6 font-display font-bold text-lg md:text-xl select-none list-none hover:bg-surface/50 rounded-xl transition-colors">
+    <span class="leading-snug">{title}</span>
+    <span class="accordion-icon w-6 h-6 shrink-0 rounded-full border-2 border-current flex items-center justify-center text-sm transition-transform duration-300 group-open:rotate-45 opacity-60 group-hover:opacity-100">
+      +
+    </span>
+  </summary>
+  <div class="accordion-content">
+    <div class="accordion-inner px-5 md:px-6 pb-5 md:pb-6 text-base md:text-lg leading-relaxed opacity-80">
+      <slot />
+    </div>
+  </div>
+</details>
+
+<style>
+  .accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  details[open] > .accordion-content {
+    grid-template-rows: 1fr;
+  }
+  .accordion-inner {
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s;
+  }
+  details[open] > .accordion-content > .accordion-inner {
+    opacity: 0.8;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .accordion-content {
+      transition: none;
+    }
+    .accordion-inner {
+      transition: none;
+      opacity: 0.8;
+      transform: none;
+    }
+  }
+</style>
