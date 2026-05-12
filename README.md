@@ -1,4 +1,4 @@
-# 🛡️ Cuida tus datos
+# Cuida tus datos
 
 **Proyecto educativo interactivo sobre privacidad digital y protección de datos personales en Chile.**
 
@@ -231,4 +231,4 @@ Astro automáticamente usará el siguiente disponible (4322, 4323, etc.) y lo mo
 
 **© 2026 — Todos los derechos reservados.**
 
-Este proyecto, incluyendo su código fuente, diseño, contenido y documentación, es propiedad de su autor. Queda prohibida su reproducción, distribución, modificación o uso comercial, total o parcial, sin autorización previa y por escrito del autor.
+Este proyecto, incluyendo su código fuente, diseño, contenido y documentación, es propiedad de sus autores. Queda prohibida su reproducción, distribución, modificación o uso comercial, total o parcial, sin autorización previa y por escrito del autor.
